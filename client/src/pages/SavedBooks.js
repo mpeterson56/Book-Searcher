@@ -1,9 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import {
-  Jumbotron,
+  ModalHeader,
   Container,
-  CardColumns,
+  CardGroup,
   Card,
   Button,
 } from "react-bootstrap";
@@ -28,7 +28,8 @@ const SavedBooks = () => {
     }
 
     try {
-      const { Data } = removeBook({
+      // eslint-disable-next-line
+      const { data } = removeBook({
         variables: { bookId },
       });
 
@@ -44,11 +45,11 @@ const SavedBooks = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <ModalHeader fluid className="text-light bg-dark">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
-      </Jumbotron>
+      </ModalHeader>
       <Container>
         <h2>
           {userData.savedBooks.length
@@ -57,7 +58,7 @@ const SavedBooks = () => {
               }:`
             : "You have no saved books!"}
         </h2>
-        <CardColumns>
+        <CardGroup>
           {userData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
@@ -82,7 +83,7 @@ const SavedBooks = () => {
               </Card>
             );
           })}
-        </CardColumns>
+        </CardGroup>
       </Container>
     </>
   );

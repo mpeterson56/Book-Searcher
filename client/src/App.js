@@ -9,12 +9,12 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "https://book-searcher69.herokuapp.com/",
 });
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");

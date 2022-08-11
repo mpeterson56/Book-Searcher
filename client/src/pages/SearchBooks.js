@@ -1,13 +1,13 @@
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from "../utils/mutations";
 import {
-  Jumbotron,
+  ModalHeader,
   Container,
   Col,
   Form,
   Button,
   Card,
-  CardColumns,
+  CardGroup,
 } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import Auth from "../utils/auth";
@@ -72,6 +72,7 @@ const SearchBooks = () => {
     }
 
     try {
+      // eslint-disable-next-line
       const { Data } = saveBook({
         variables: { ...bookToSave },
       });
@@ -84,7 +85,7 @@ const SearchBooks = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <ModalHeader fluid className="text-light bg-dark">
         <Container>
           <h1>Search for Books!</h1>
           <Form onSubmit={handleFormSubmit}>
@@ -107,7 +108,7 @@ const SearchBooks = () => {
             </Form.Row>
           </Form>
         </Container>
-      </Jumbotron>
+      </ModalHeader>
 
       <Container>
         <h2>
@@ -115,7 +116,7 @@ const SearchBooks = () => {
             ? `Viewing ${searchedBooks.length} results:`
             : "Search for a book to begin"}
         </h2>
-        <CardColumns>
+        <CardGroup>
           {searchedBooks.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
@@ -149,7 +150,7 @@ const SearchBooks = () => {
               </Card>
             );
           })}
-        </CardColumns>
+        </CardGroup>
       </Container>
     </>
   );
