@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from "../utils/mutations";
 import {
-  ModalHeader,
+ 
   Container,
-  Col,
+  
   Form,
   Button,
   Card,
@@ -72,8 +72,8 @@ const SearchBooks = () => {
     }
 
     try {
-      // eslint-disable-next-line
-      const { Data } = saveBook({
+    
+      const { savedBookIds } = saveBook({
         variables: { ...bookToSave },
       });
 
@@ -85,12 +85,12 @@ const SearchBooks = () => {
 
   return (
     <>
-      <ModalHeader fluid className="text-light bg-dark">
+      
         <Container>
           <h1>Search for Books!</h1>
           <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={8}>
+            
+              <div xs={12} md={8}>
                 <Form.Control
                   name="searchInput"
                   value={searchInput}
@@ -99,16 +99,16 @@ const SearchBooks = () => {
                   size="lg"
                   placeholder="Search for a book"
                 />
-              </Col>
-              <Col xs={12} md={4}>
+              </div>
+              <div xs={12} md={4}>
                 <Button type="submit" variant="success" size="lg">
                   Submit Search
                 </Button>
-              </Col>
-            </Form.Row>
+              </div>
+            
           </Form>
         </Container>
-      </ModalHeader>
+     
 
       <Container>
         <h2>

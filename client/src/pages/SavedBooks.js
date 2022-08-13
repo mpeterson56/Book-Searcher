@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import {
-  ModalHeader,
+  
   Container,
   CardGroup,
   Card,
@@ -28,8 +28,8 @@ const SavedBooks = () => {
     }
 
     try {
-      // eslint-disable-next-line
-      const { data } = removeBook({
+     
+       removeBook({
         variables: { bookId },
       });
 
@@ -45,11 +45,11 @@ const SavedBooks = () => {
 
   return (
     <>
-      <ModalHeader fluid className="text-light bg-dark">
+      <h2 fluid className="text-light bg-dark">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
-      </ModalHeader>
+      </h2>
       <Container>
         <h2>
           {userData.savedBooks.length
